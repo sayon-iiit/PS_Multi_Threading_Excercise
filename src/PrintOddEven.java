@@ -1,8 +1,8 @@
 // Java program for the above approach
 
-public class PrintOddEven extends Thread{
+public class PrintOddEven{
     int counter = 1;
-    static int N=10;
+    int N=10;
     synchronized public void printOddNumber()
     {
             while (counter < N) {
@@ -34,23 +34,5 @@ public class PrintOddEven extends Thread{
                 counter++;
                 notify();
             }
-    }
-    public static void main(String[] args)
-    {
-        PrintOddEven mt = new PrintOddEven();
-        Thread t1 = new Thread(new Runnable() {
-            public void run()
-            {
-                mt.printEvenNumber();
-            }
-        });
-        Thread t2 = new Thread(new Runnable() {
-            public void run()
-            {
-                mt.printOddNumber();
-            }
-        });
-        t1.start();
-        t2.start();
     }
 }
